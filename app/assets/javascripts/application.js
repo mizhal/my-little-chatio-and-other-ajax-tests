@@ -13,3 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	$("a[data-type='op']").click(function(){
+		var request = $.ajax({
+			url: "/calculadoras/operar.json",
+			type: 'GET',
+			data: {
+				op1: $("input[name='op1']").val(),
+				op2: $("input[name='op2']").val(),
+				op: $(this).attr("data-op")
+			}
+		}).done(function(response){
+			$("span[data-id='res']").html(response.res);
+		}).fail(function(){
+			alert("Error");
+		});
+		
+		return false;
+	});
+})

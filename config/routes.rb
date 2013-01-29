@@ -1,4 +1,7 @@
 Ajax::Application.routes.draw do
+  get "calculadoras/operar"
+  get "calculadoras/show"
+
   get "prueba/index"
 
   # The priority is based upon order of creation:

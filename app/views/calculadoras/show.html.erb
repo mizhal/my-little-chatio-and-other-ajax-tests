@@ -1,0 +1,17 @@
+<div class="calculadora">
+	<%= label_tag :op1, "operando 1" %>
+	<%= text_field_tag :op1 %>
+	
+	<%= label_tag :op1, "operando 2" %>		
+	<%= text_field_tag :op2 %>
+	<%= hidden_field_tag :op %>
+	
+	<%= link_to "+", "#", :data => { :type => "op", :op => "+" } %>
+	<%= link_to "-", "#",  :data => { :type => "op", :op => "-" } %>
+	<%= link_to "*", "#",  :data => { :type => "op", :op => "*" } %>
+	<%= link_to "/", "#",  :data => { :type => "op", :op => "/" } %>
+	
+	<div>
+		Respuesta: <span data-id="res">Salida</span>
+	</div>
+</div>
