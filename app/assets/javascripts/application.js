@@ -25,9 +25,13 @@ $(document).ready(function(){
 				op2: $("input[name='op2']").val(),
 				op: $(this).attr("data-op")
 			}
-		}).done(function(response){
+		})
+		
+		request.done(function(response){
 			$("span[data-id='res']").html(response.res);
-		}).fail(function(){
+		})
+		
+		request.fail(function(){
 			alert("Error");
 		});
 		
