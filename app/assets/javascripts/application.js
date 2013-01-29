@@ -15,26 +15,55 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-$(document).ready(function(){
-	$("a[data-type='op']").click(function(){
+$(document).ready(function() {
+
+	// CALCULADORA
+	$("a[data-type='op']").click(function() {
 		var request = $.ajax({
-			url: "/calculadoras/operar.json",
-			type: 'GET',
-			data: {
-				op1: $("input[name='op1']").val(),
-				op2: $("input[name='op2']").val(),
-				op: $(this).attr("data-op")
+			url : "/calculadoras/operar.json",
+			type : 'GET',
+			data : {
+				op1 : $("input[name='op1']").val(),
+				op2 : $("input[name='op2']").val(),
+				op : $(this).attr("data-op")
 			}
 		})
-		
-		request.done(function(response){
+
+		request.done(function(response) {
 			$("span[data-id='res']").html(response.res);
 		})
-		
-		request.fail(function(){
+
+		request.fail(function() {
 			alert("Error");
 		});
-		
+
 		return false;
 	});
+
+	// CHAT
+	var chatroom = $("div.chatroom");
+	if (chatroom.length > 0) {
+		alert("welcome to chat")
+		setInterval(function() {
+			var request = $.ajax({
+				url : "/chats/update_chatroom",
+				type: "GET",
+				data: {
+					last_update : chatroom.find("div.conversation").attr("data-last-update")
+				}
+			});
+			request.done(function(data){
+				var conversation = chatroom.find("div.conversation");
+				for(var i = 0; i < data.messages.length; i++){
+					var msg = data.messages[i]
+					conversation.append("<p>"+ msg.nick + "(" + msg.created_at + ") &gt; " + msg.message + "</p>")
+				}
+				conversation.attr("data-last-update", data.last_update);
+			});
+			request.fail(function(){
+				alert("Error al actualizar la conversacion");
+			});
+		}, 
+		5000);
+	}
 })

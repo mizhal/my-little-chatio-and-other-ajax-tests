@@ -1,0 +1,9 @@
+<h3>¿Como te llamas?</h3>
+<%= form_tag chats_check_user_path, :method => :get, :remote => true do %>
+	<div class="input-append">
+	<%= text_field_tag :nick %>
+	<%= submit_tag ">>" %>
+	</div>
+	<div class="output">
+<% end %>
+</div>

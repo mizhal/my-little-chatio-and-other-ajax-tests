@@ -1,4 +1,14 @@
 Ajax::Application.routes.draw do
+  get "chats/login"
+
+  get "chats/check_user"
+
+  get "chats/chatroom"
+
+  get "chats/update_chatroom"
+
+  post "chats/post_message"
+
   get "calculadoras/operar"
   get "calculadoras/show"
 

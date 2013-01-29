@@ -1,0 +1,20 @@
+<div class="chatroom">
+	<h1>Chatroom</h1>
+	<div>
+		<p>Bienvenido <%= params[:nick] %>
+	</div>
+	<div class="conversation" data-last-update="<%= DateTime::now %>">
+		<% @current_messages.each{ |m| %>
+			<div class="message">
+				<%= simple_format "#{m.nick} (#{m.created_at})> #{m.message}"%>
+			</div>
+		<% } %>
+	</div>
+	<div class="inputs">
+		<%= form_tag chats_post_message_path, :remote => true do %>
+			<%= text_field_tag :message %>
+			<%= hidden_field_tag :nick, params[:nick] %>
+			<%= submit_tag %>
+		<% end %>
+	</div>
+</div>
