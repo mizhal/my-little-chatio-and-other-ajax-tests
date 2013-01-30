@@ -3,7 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.conversation {
+  padding: 1em;
   height: 15em;
   width: 100%;
   background-color: #ccc;
+  overflow-y: scroll; 
+  width: 60%;
+}
+
+div.users {
+  padding: 1em;
+  background-color: #aaa;
+  color: #fff;
+  width: 25%;
 }

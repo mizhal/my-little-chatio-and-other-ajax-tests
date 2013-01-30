@@ -43,7 +43,8 @@ $(document).ready(function() {
 	// CHAT
 	var chatroom = $("div.chatroom");
 	if (chatroom.length > 0) {
-		alert("welcome to chat")
+		var conversation = chatroom.find("div.conversation");
+		var user_list = chatroom.find("div.users");
 		setInterval(function() {
 			var request = $.ajax({
 				url : "/chats/update_chatroom",
@@ -53,17 +54,29 @@ $(document).ready(function() {
 				}
 			});
 			request.done(function(data){
-				var conversation = chatroom.find("div.conversation");
 				for(var i = 0; i < data.messages.length; i++){
-					var msg = data.messages[i]
-					conversation.append("<p>"+ msg.nick + "(" + msg.created_at + ") &gt; " + msg.message + "</p>")
+					var msg = data.messages[i];
+					conversation.append(
+						"<div class='message'>" + 
+						msg.nick + " &gt; " + msg.message + "</div>"
+					);
+				}
+				user_list.html("");
+				for(var i = 0; i < data.users.length; i++){
+					var user = data.users[i];
+					user_list.append('<div class="user">' + user.nick + '</div>')
 				}
 				conversation.attr("data-last-update", data.last_update);
+				
+				if(data.messages.length > 0)
+					conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, "slow");
 			});
 			request.fail(function(){
 				alert("Error al actualizar la conversacion");
 			});
 		}, 
-		5000);
+		1000);
+		
+		conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, "slow");
 	}
 })

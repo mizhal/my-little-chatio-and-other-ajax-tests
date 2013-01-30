@@ -3,15 +3,24 @@
 	<div>
 		<p>Bienvenido <%= params[:nick] %>
 	</div>
-	<div class="conversation" data-last-update="<%= DateTime::now %>">
-		<% @current_messages.each{ |m| %>
-			<div class="message">
-				<%= simple_format "#{m.nick} (#{m.created_at})> #{m.message}"%>
-			</div>
-		<% } %>
+	<div class="row">
+		<div class="conversation span9" data-last-update="<%= DateTime::now %>" >
+			<% @current_messages.each{ |m| %>
+				<div class="message">
+					<%= "#{m.nick} > #{m.message}" %>
+				</div>
+			<% } %>
+		</div>
+		<div class="users span3" >
+			<% @current_users.each{ |u| %>
+				<div class="user">
+					<%= u.nick %>
+				</div>
+			<% } %>
+		</div>
 	</div>
 	<div class="inputs">
-		<%= form_tag chats_post_message_path, :remote => true do %>
+		<%= form_tag chats_post_message_path(:format => :js), :remote => true do %>
 			<%= text_field_tag :message %>
 			<%= hidden_field_tag :nick, params[:nick] %>
 			<%= submit_tag %>
