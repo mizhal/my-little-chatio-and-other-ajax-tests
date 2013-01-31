@@ -59,7 +59,7 @@ class ChatsController < ApplicationController
     user = User.find_by_nick params[:nick]
     clean_message = params[:message].strip()
     if clean_message[0] == "/"
-      command = clean_message.slice(1,-1)
+      command = clean_message.slice(1..-1).strip()
       if command == "leave" or command == "quit"
         user = User.find_by_nick params[:nick]
         user.destroy if user
