@@ -32,8 +32,8 @@ class ChatsController < ApplicationController
     if @user
       @current_messages = Message.order("created_at desc").limit(15)
       @current_messages.reverse!
-      @current_users = User.order("heartbeat desc")
-        .where("heartbeat > ?", (Time::now - 5 * 60))
+      @current_users = User.select("nick").order("heartbeat desc")
+        .where("heartbeat > ?", (Time::now - (5 * 60)))
     else
       redirect_to chats_login_path
     end
@@ -49,22 +49,27 @@ class ChatsController < ApplicationController
       next_update = @messages.last.created_at
     end
     
-    @users = User.order("heartbeat desc")
-        .where("heartbeat > ?", (Time::now - 5 * 60))
+    @users = User.select("nick").order("heartbeat desc")
+        .where("heartbeat > ?", (Time::now - (5 * 60)))
     render json: {messages: @messages, last_update: next_update, users: @users}
   end
 
   ## accion en segundo plano que sube el mensaje al servidor
   def post_message
     user = User.find_by_nick params[:nick]
-    if params[:message].strip() != "\\leave"
+    clean_message = params[:message].strip()
+    if clean_message[0] == "/"
+      command = clean_message.slice(1,-1)
+      if command == "leave" or command == "quit"
+        user = User.find_by_nick params[:nick]
+        user.destroy if user
+        @salir = true
+      end
+      ### hacer "unknown command o similar"
+    else
       Message.create :nick => params[:nick], :message => params[:message]
       @salir = false
-      user.update_attribute(:heartbeat, DateTime::now)
-    else
-      user = User.find_by_nick params[:nick]
-      user.destroy if user
-      @salir = true
+      user.update_attribute(:heartbeat, DateTime::now)      
     end
   end
 
