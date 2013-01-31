@@ -32,8 +32,8 @@ class ChatsController < ApplicationController
     if @user
       @current_messages = Message.order("created_at desc").limit(15)
       @current_messages.reverse!
-      @current_users = User.order("created_at desc")
-        #.where("created_at > ?", (Time::now - 60))
+      @current_users = User.order("heartbeat desc")
+        .where("heartbeat > ?", (Time::now - 5 * 60))
     else
       redirect_to chats_login_path
     end
@@ -49,8 +49,8 @@ class ChatsController < ApplicationController
       next_update = @messages.last.created_at
     end
     
-    @users = User.order("created_at desc")
-        #.where("created_at > ?", (Time::now - 60))
+    @users = User.order("heartbeat desc")
+        .where("heartbeat > ?", (Time::now - 5 * 60))
     render json: {messages: @messages, last_update: next_update, users: @users}
   end
 
