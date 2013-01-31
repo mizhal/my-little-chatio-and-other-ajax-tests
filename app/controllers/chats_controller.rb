@@ -56,9 +56,11 @@ class ChatsController < ApplicationController
 
   ## accion en segundo plano que sube el mensaje al servidor
   def post_message
+    user = User.find_by_nick params[:nick]
     if params[:message].strip() != "\\leave"
       Message.create :nick => params[:nick], :message => params[:message]
       @salir = false
+      user.update_attribute(:heartbeat, DateTime::now)
     else
       user = User.find_by_nick params[:nick]
       user.destroy if user
