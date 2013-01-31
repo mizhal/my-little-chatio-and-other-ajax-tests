@@ -21,9 +21,11 @@
 	</div>
 	<div class="inputs">
 		<%= form_tag chats_post_message_path(:format => :js), :remote => true do %>
-			<%= text_field_tag :message %>
 			<%= hidden_field_tag :nick, params[:nick] %>
-			<%= submit_tag %>
+			<div class="input-append">
+				<%= text_field_tag :message %>
+				<%= submit_tag ">>", :class => "btn btn-success" %>
+			</div>
 		<% end %>
 	</div>
 </div>

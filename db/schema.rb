@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130129113004) do
   create_table "users", :force => true do |t|
     t.string   "nick"
     t.boolean  "logged_in"
+    t.datetime "heartbeat"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
