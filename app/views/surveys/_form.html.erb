@@ -1,18 +1,23 @@
 <%= form_for @survey, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  
-  <%= f.fields_for :questions do |question| %>
-  	<%= render :partial => "surveys/question_fields", :locals => {f: question} %>
-  <% end %>
+<div class="control-group">
+	<%= f.label :name, :class => 'control-label' %>
+	<div class="controls">
+		<%= f.text_field :name, :class => 'text_field' %>
+	</div>
+</div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                surveys_path, :class => 'btn' %>
-  </div>
+<div class="questions">
+	<%= f.fields_for :questions do |question| %>
+		<%= render :partial => "surveys/question_fields", :locals => {f: question} %>
+	<% end %>
+</div>
+<%= button_tag t(".add_question"), :class => "question-new-button" %>
+
+<div class="form-actions">
+	<%= f.submit nil, :class => 'btn btn-primary' %>
+	<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	surveys_path, :class => 'btn' %>
+</div>
 <% end %>
+<%= render :partial => "surveys/question_template" %>
+<%= render :partial => "surveys/answer_template" %>

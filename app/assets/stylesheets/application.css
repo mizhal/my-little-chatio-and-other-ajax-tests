@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+div.template{
+	/* plantillas para javascript, que deben estar ocultas */
+	display: none;
+}

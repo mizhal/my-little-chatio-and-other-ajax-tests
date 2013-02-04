@@ -5,7 +5,9 @@
 	  <%= f.check_box :_destroy %>  
 	  <%= f.label :_destroy, "Remove Question", :style => "display:inline" %>  
 	</p>  
-	<%= f.fields_for :answers do |builder| %>  
-	  <%= render :partial => 'surveys/answer_fields', :locals => {f: builder} %>  
-	<% end %>  
+	<div class="answers">
+		<%= f.fields_for :answers do |builder| %>  
+		  <%= render :partial => 'surveys/answer_fields', :locals => {f: builder} %>  
+		<% end %>  
+	</div>
 </div>

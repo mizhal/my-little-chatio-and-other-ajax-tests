@@ -1,0 +1,23 @@
+<div class="template answer-template">
+	<p>
+		<label for="survey_questions_attributes_{{pos_question}}_answers_attributes_{{pos}}_content">
+			Answer
+		</label>
+		<input id="survey_questions_attributes_{{pos_question}}_answers_attributes_{{pos}}_content" 
+			type="text" value="A1" size="30" 
+			name="survey[questions_attributes][{{pos_question}}][answers_attributes][{{pos}}][content]"
+		>
+		<input type="hidden" 
+			value="0" name="survey[questions_attributes][{{pos_question}}][answers_attributes][{{pos}}][_destroy]"
+		>
+		<input 
+			id="survey_questions_attributes_{{pos_question}}_answers_attributes_{{pos}}__destroy" 
+			type="checkbox" value="1" 
+			name="survey[questions_attributes][{{pos_question}}][answers_attributes][{{pos}}][_destroy]"
+		>
+		<label style="display:inline" 
+			for="survey_questions_attributes_{{pos_question}}_answers_attributes_{{pos}}__destroy">
+			Remove
+		</label>
+	</p>
+</div>

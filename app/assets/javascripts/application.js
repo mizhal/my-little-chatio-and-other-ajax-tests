@@ -15,6 +15,14 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+function render_template(template_div /* :NodoHTML */, variables /* :Dict{String -> String} */){
+	var text = template_div.html();
+	for(var key in variables){
+		text = text.replace(new RegExp("{{"+ key +"}}", "igm"), variables[key]);
+	}
+	return text
+}
+
 $(document).ready(function() {
 
 	// CALCULADORA
@@ -79,4 +87,21 @@ $(document).ready(function() {
 		
 		conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, "slow");
 	}
+	
+	$("button.question-new-button").on("click", function(){
+		
+		var template = $("div.question-template").first();
+		if(template.length < 1){
+			alert("No hay plantilla");
+			return false;
+		}
+		var questions = $("div.questions");
+		questions.append(
+			render_template(template, 
+				{pos:questions.children().length}
+			)
+		);
+		
+		return false;
+	});
 })
