@@ -1,4 +1,7 @@
 Ajax::Application.routes.draw do
+  resources :surveys
+
+
   get "chats/login"
 
   get "chats/check_user"
