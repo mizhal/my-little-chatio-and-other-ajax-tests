@@ -7,9 +7,13 @@
 </div>
 
 <div class="questions">
-	<%= f.fields_for :questions do |question| %>
-		<%= render :partial => "surveys/question_fields", :locals => {f: question} %>
-	<% end %>
+	<div class="control-group">
+		<div class="controls">
+			<%= f.fields_for :questions do |question| %>
+				<%= render :partial => "surveys/question_fields", :locals => {f: question} %>
+			<% end %>
+		</div>
+	</div>
 </div>
 <%= button_tag t(".add_question"), :class => "question-new-button" %>
 

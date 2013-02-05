@@ -1,69 +1,75 @@
 <div class="template question-template">
-	<p>
-		<label for="survey_questions_attributes_{{pos}}_content">Question</label>
-		<br>
-		<textarea id="survey_questions_attributes_{{pos}}_content" 
-		rows="3" 
-		name="survey[questions_attributes][{{pos}}][content]" 
-		cols="40">
-	</textarea>
-		<br>
-		<input type="hidden" value="0" name="survey[questions_attributes][{{pos}}][_destroy]">
-		<input id="survey_questions_attributes_{{pos}}__destroy"
-		type="checkbox" value="1"
-		name="survey[questions_attributes][{{pos}}][_destroy]">
-		<label style="display:inline"
-		for="survey_questions_attributes_{{pos}}__destroy">Remove Question</label>
-	</p>
-	<div class="answers">
-
-		<div>
-			<p>
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_0_content">Answer</label>
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_0_content" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][0][content]" size="30" type="text" />
-				<input name="survey[questions_attributes][{{pos}}][answers_attributes][0][_destroy]" type="hidden" value="0" />
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_0__destroy" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][0][_destroy]" type="checkbox" value="1" />
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_0__destroy" style="display:inline">Remove</label>
-			</p>
+	<div class="control-group">
+		<div class="controls">
+			<div class="question">
+				<p>
+					<label for="survey_questions_attributes_{{pos}}_content">Question</label>
+					<br>
+					<textarea id="survey_questions_attributes_{{pos}}_content" 
+					rows="3" 
+					name="survey[questions_attributes][{{pos}}][content]" 
+					cols="40">
+				</textarea>
+					<br>
+					<input type="hidden" value="0" name="survey[questions_attributes][{{pos}}][_destroy]">
+					<input id="survey_questions_attributes_{{pos}}__destroy"
+					type="checkbox" value="1"
+					name="survey[questions_attributes][{{pos}}][_destroy]">
+					<label style="display:inline"
+					for="survey_questions_attributes_{{pos}}__destroy">Remove Question</label>
+				</p>
+				<div class="answers">
+			
+					<div class="answer">
+						<p>
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_0_content">Answer</label>
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_0_content"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][0][content]" size="30" type="text" />
+							<input name="survey[questions_attributes][{{pos}}][answers_attributes][0][_destroy]" type="hidden" value="0" />
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_0__destroy"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][0][_destroy]" type="checkbox" value="1" />
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_0__destroy" style="display:inline">Remove</label>
+						</p>
+					</div>
+			
+					<div class="answer">
+						<p>
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_1_content">Answer</label>
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_1_content"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][1][content]" size="30" type="text" />
+							<input name="survey[questions_attributes][{{pos}}][answers_attributes][1][_destroy]" type="hidden" value="0" />
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_1__destroy"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][1][_destroy]" type="checkbox" value="1" />
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_1__destroy" style="display:inline">Remove</label>
+						</p>
+					</div>
+			
+					<div class="answer">
+						<p>
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_2_content">Answer</label>
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_2_content"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][2][content]" size="30" type="text" />
+							<input name="survey[questions_attributes][{{pos}}][answers_attributes][2][_destroy]" type="hidden" value="0" />
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_2__destroy"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][2][_destroy]" type="checkbox" value="1" />
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_2__destroy" style="display:inline">Remove</label>
+						</p>
+					</div>
+			
+					<div class="answer">
+						<p>
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_3_content">Answer</label>
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_3_content"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][3][content]" size="30" type="text" />
+							<input name="survey[questions_attributes][{{pos}}][answers_attributes][3][_destroy]" type="hidden" value="0" />
+							<input id="survey_questions_attributes_{{pos}}_answers_attributes_3__destroy"
+							name="survey[questions_attributes][{{pos}}][answers_attributes][3][_destroy]" type="checkbox" value="1" />
+							<label for="survey_questions_attributes_{{pos}}_answers_attributes_3__destroy" style="display:inline">Remove</label>
+						</p>
+					</div>
+			
+				</div>
+			</div>
 		</div>
-
-		<div>
-			<p>
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_1_content">Answer</label>
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_1_content" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][1][content]" size="30" type="text" />
-				<input name="survey[questions_attributes][{{pos}}][answers_attributes][1][_destroy]" type="hidden" value="0" />
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_1__destroy" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][1][_destroy]" type="checkbox" value="1" />
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_1__destroy" style="display:inline">Remove</label>
-			</p>
-		</div>
-
-		<div>
-			<p>
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_2_content">Answer</label>
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_2_content" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][2][content]" size="30" type="text" />
-				<input name="survey[questions_attributes][{{pos}}][answers_attributes][2][_destroy]" type="hidden" value="0" />
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_2__destroy" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][2][_destroy]" type="checkbox" value="1" />
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_2__destroy" style="display:inline">Remove</label>
-			</p>
-		</div>
-
-		<div>
-			<p>
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_3_content">Answer</label>
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_3_content" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][3][content]" size="30" type="text" />
-				<input name="survey[questions_attributes][{{pos}}][answers_attributes][3][_destroy]" type="hidden" value="0" />
-				<input id="survey_questions_attributes_{{pos}}_answers_attributes_3__destroy" 
-					name="survey[questions_attributes][{{pos}}][answers_attributes][3][_destroy]" type="checkbox" value="1" />
-				<label for="survey_questions_attributes_{{pos}}_answers_attributes_3__destroy" style="display:inline">Remove</label>
-			</p>
-		</div>
-
 	</div>
 </div>
